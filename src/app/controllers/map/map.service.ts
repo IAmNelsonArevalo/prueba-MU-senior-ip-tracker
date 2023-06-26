@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {Observable} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 /** Interfaces & Types */
 import type {ILocationData} from "src/app/models/interfaces/map.interfaces";
@@ -8,6 +8,8 @@ import type {ILocationData} from "src/app/models/interfaces/map.interfaces";
     providedIn: 'root'
 })
 export class MapService {
+    public latitude: number = 0;
+    public longitude: number = 0;
     constructor(
         private http: HttpClient
     ) {
@@ -42,5 +44,8 @@ export class MapService {
 
     public getTimezoneAndIPS(ip: string): any {
         return this.http.get(`https://ipapi.co/${ip}/json/`)
+    }
+    public getLatitudeAndLongitude(ip: string): Observable<any> {
+        return this.http.get(`http://ip-api.com/json/${ip}`)
     }
 }

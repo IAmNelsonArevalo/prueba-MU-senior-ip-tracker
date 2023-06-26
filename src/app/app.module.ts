@@ -8,6 +8,7 @@ import {NgxPermissionsModule} from "ngx-permissions";
 import { LoadingComponent } from './views/components/loading/loading.component';
 import {NgOptimizedImage} from "@angular/common";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
     AppRoutingModule,
     NgxPermissionsModule.forRoot(),
     NgOptimizedImage,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
