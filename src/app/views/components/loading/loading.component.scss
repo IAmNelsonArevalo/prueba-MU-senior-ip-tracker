@@ -1,0 +1,3 @@
+.overlay {
+  @apply w-screen h-screen fixed z-[100000] bg-overlay-bg top-0 left-0 flex justify-center items-center;
+}
