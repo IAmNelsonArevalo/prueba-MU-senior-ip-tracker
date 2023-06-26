@@ -1,0 +1,83 @@
+.body {
+    @apply relative w-screen h-screen;
+
+    .header {
+        @apply flex items-center flex-col bg-header bg-cover h-[240px];
+
+        @media (max-width: 800px) {
+            @apply relative h-[340px];
+        }
+
+        .title {
+            @apply leading-[32px] text-[30px] text-white mt-[30px];
+        }
+
+        .input-container {
+            @apply relative flex mt-[40px] max-w-[500px] w-full;
+
+            @media (max-width: 800px) {
+                @apply w-[80%];
+            }
+
+            input {
+                @apply h-[45px] w-[80%] rounded-l-lg px-[10px] text-[18px];
+
+                &:focus, &:focus-visible, &:focus-within {
+                    outline: none;
+                }
+            }
+
+            .button-search {
+                @apply h-[45px] w-[20%] rounded-r-lg bg-black flex justify-center items-center;
+
+                img {
+                    @apply w-[11px] h-[14px];
+                }
+            }
+        }
+
+        .card-container {
+            @apply w-[80%] h-[100px] rounded-lg bg-white shadow-md z-[10000] mt-[40px] min-h-[100px] flex items-center;
+
+            @media (max-width: 820px) {
+                @apply flex justify-between items-center flex-col mt-[30px] py-[20px] min-h-[100%];
+            }
+
+            .content {
+                @apply w-cols-4 h-[60px] mx-[10px] border-dark-gray border-r-[1px] relative;
+                @layer border-r-solid;
+
+                &:last-child {
+                    @apply border-none;
+                }
+
+                @media (max-width: 820px) {
+                    @apply mb-[10px] flex items-center flex-col border-none m-0 h-[auto] w-[auto];
+                }
+
+                .title {
+                    @apply text-[10px] text-dark-gray mt-0 font-bold tracking-[1px] font-rubik;
+                }
+
+                .detail {
+                    @apply font-medium text-[15px] leading-3 font-rubik w-[33.3%];
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+
+                   @media (max-width: 800px) {
+                       @apply w-full text-center leading-[21px] text-[18px];
+                       white-space: pre-wrap;
+                   }
+                }
+            }
+        }
+    }
+
+    #map {
+        @apply h-map-desktop;
+
+        @media (max-width: 800px) {
+            @apply h-[65vh];
+        }
+    }
+}
