@@ -4,7 +4,7 @@
     .header {
         @apply flex items-center flex-col bg-header bg-cover h-[240px];
 
-        @media (max-width: 800px) {
+        @media (max-width: 820px) {
             @apply relative h-[340px];
         }
 
@@ -15,7 +15,7 @@
         .input-container {
             @apply relative flex mt-[40px] max-w-[500px] w-full;
 
-            @media (max-width: 800px) {
+            @media (max-width: 820px) {
                 @apply w-[80%];
             }
 
@@ -40,7 +40,7 @@
             @apply w-[80%] h-[100px] rounded-lg bg-white shadow-md z-[10000] mt-[40px] min-h-[100px] flex items-center;
 
             @media (max-width: 820px) {
-                @apply flex justify-between items-center flex-col mt-[30px] py-[20px] min-h-[100%];
+                @apply flex justify-between items-center flex-col mt-[30px] py-[20px] min-h-[100%] px-[40px];
             }
 
             .content {
@@ -64,7 +64,7 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
 
-                   @media (max-width: 800px) {
+                   @media (max-width: 820px) {
                        @apply w-full text-center leading-[21px] text-[18px];
                        white-space: pre-wrap;
                    }
@@ -76,8 +76,8 @@
     #map {
         @apply h-map-desktop;
 
-        @media (max-width: 800px) {
-            @apply h-[65vh];
+        @media (max-width: 820px) {
+            @apply h-map-mobile;
         }
     }
 }
