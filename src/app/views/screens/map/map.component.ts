@@ -22,6 +22,7 @@ export class MapComponent implements OnInit {
     public location: string = "";
     public timeZone: string = "";
     public isp: string = "";
+    public inputValue: string = "";
 
     constructor(
         private mapServices: MapService,
@@ -74,7 +75,6 @@ export class MapComponent implements OnInit {
                         .subscribe(
                             async (response: any) => {
                                 this.location = response.name;
-                                this.isp = this.mapServices.getTimezoneAndIPS(res.ip).org;
                                 this.mapServices.getTimezoneAndIPS(res.ip)
                                     .subscribe(
                                         (item: any) => {
@@ -106,7 +106,45 @@ export class MapComponent implements OnInit {
 
         /** Now we configure the marker icon on the map. */
         Leaflet.marker([data.latitude, data.longitude], {icon: iconMaker}).addTo(this.map);
+    }
 
+    public async  searchIp(): Promise<void> {
+        this.loading = true;
+        await this.mapServices.getLatitudeAndLongitude(this.inputValue)
+            .subscribe(
+                (res: any) => {
+                    this.mapServices.getAddressItems(res.lat, res.lon)
+                        .subscribe(
+                            async (response: any) => {
+                                this.location = response.name;
+                                await this.mapServices.getTimezoneAndIPS(this.inputValue)
+                                    .subscribe(
+                                        (responseTime: any) => {
+                                            this.timeZone = `UTC ${responseTime.utc_offset.replace(/^-(\d{2})(\d{2})$/, "-$1:$2")}`;
+                                            this.isp = responseTime.org;
+                                            this.ip = this.inputValue;
 
+                                            if(this.map) {
+                                                const iconMaker= Leaflet.icon({
+                                                    iconUrl: "/assets/images/icon-location.svg",
+                                                    iconSize: [26, 36]
+                                                });
+
+                                                Leaflet.marker([res.lat, res.lon], {
+                                                    icon: iconMaker
+                                                }).addTo(this.map);
+                                                this.map?.setView([res.lat, res.lon], 18);
+
+                                                this.loading = false;
+                                            }
+
+                                        },
+                                        (error: any) => console.error('GET_TIMEZONE_AND_IPS', error),
+                                    )
+                            },
+                            (error) => console.error('GET_ADDRESS_ITEMS: ', error)
+                        );
+                },
+                (error) => console.error('GET_LATITUDE_LONGITUDE: ', error));
     }
 }

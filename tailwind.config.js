@@ -18,7 +18,8 @@ module.exports = {
         "cols-4": "calc(100% / 4)",
       },
       height: {
-        "map-desktop": "calc(100vh - 240px)",
+        "map-desktop": "calc(100vh - 250px)",
+        "map-mobile": "calc(100vh - 340px)"
       }
     },
   },
