@@ -48,7 +48,8 @@ export class MapService {
     public getLatitudeAndLongitude(ip: string): Observable<any> {
         return this.http.get(`http://ip-api.com/json/${ip}`, {
             headers: {
-                "Content-Security-Policy": "default-src 'self'; script-src 'self' http://ip-api.com"
+                "Content-Security-Policy": "default-src 'self'; script-src 'self' http://ip-api.com",
+                "Access-Control-Allow-Origin": "*"
             }
         })
     }
