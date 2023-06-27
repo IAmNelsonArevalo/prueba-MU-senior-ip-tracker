@@ -31,18 +31,7 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              {
-                "glob": "**/*",
-                "input": "src/assets",
-                "output": "/assets",
-                "extraHeaders": [
-                  {
-                    "header": "Content-Security-Policy",
-                    "value": "default-src 'self'; script-src 'self' http://ip-api.com"
-                  }
-                ]
-              }
+              "src/assets"
             ],
             "styles": [
               "src/styles.scss"
