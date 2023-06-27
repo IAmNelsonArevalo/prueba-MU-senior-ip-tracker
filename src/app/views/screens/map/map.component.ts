@@ -75,11 +75,13 @@ export class MapComponent implements OnInit {
                         .subscribe(
                             async (response: any) => {
                                 this.location = response.name;
-                                this.mapServices.getTimezoneAndIPS(res.ip)
+                                this.mapServices.getTimezoneAndIPS(res.ip ?? res.query)
                                     .subscribe(
                                         (item: any) => {
-                                            this.timeZone = `UTC ${item.utc_offset.replace(/^-(\d{2})(\d{2})$/, "-$1:$2")}`;
+                                            if(item.utc_offset) {
+                                                this.timeZone = `UTC ${item.utc_offset.replace(/^-(\d{2})(\d{2})$/, "-$1:$2")}`;
                                             this.isp = item.org;
+                                            }
                                         },
                                         (error: any) => console.error(error)
                                     )
@@ -117,7 +119,7 @@ export class MapComponent implements OnInit {
                         .subscribe(
                             async (response: any) => {
                                 this.location = response.name;
-                                await this.mapServices.getTimezoneAndIPS(this.inputValue)
+                                await this.mapServices.getTimezoneAndIPS(res.ip ?? res.query)
                                     .subscribe(
                                         (responseTime: any) => {
                                             this.timeZone = `UTC ${responseTime.utc_offset.replace(/^-(\d{2})(\d{2})$/, "-$1:$2")}`;
