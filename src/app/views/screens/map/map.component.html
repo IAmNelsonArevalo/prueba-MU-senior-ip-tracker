@@ -2,9 +2,14 @@
     <header class="header">
         <h1 class="title">IP Address Tracker</h1>
         <div class="input-container">
-            <input type="text" placeholder="Enter your ip address...">
-            <button class="button-search">
-                <img ngSrc="/assets/images/icon-arrow.svg" alt="Chevron Arrow" width="30" height="30" />
+            <input
+                    type="text"
+                    placeholder="Enter your ip address..."
+                    [(ngModel)]="inputValue"
+                    (keydown.enter)="searchIp()"
+            >
+            <button class="button-search" (click)="searchIp()">
+                <img ngSrc="/assets/images/icon-arrow.svg" alt="Chevron Arrow" width="30" height="30"/>
             </button>
         </div>
         <div class="card-container">
