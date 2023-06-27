@@ -46,6 +46,6 @@ export class MapService {
         return this.http.get(`https://ipapi.co/${ip}/json/`)
     }
     public getLatitudeAndLongitude(ip: string): Observable<any> {
-        return this.http.get(`http://ip-api.com/json/${ip}`)
+        return this.http.get(`https://ip-api.com/json/${ip}`)
     }
 }
