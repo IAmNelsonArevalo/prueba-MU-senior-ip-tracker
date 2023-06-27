@@ -20,7 +20,7 @@
             }
 
             input {
-                @apply h-[45px] w-[80%] rounded-l-lg px-[10px] text-[18px];
+                @apply h-[45px] w-[80%] rounded-l-lg px-[10px] text-[18px] text-very-dark-gray;
 
                 &:focus, &:focus-visible, &:focus-within {
                     outline: none;
@@ -28,7 +28,7 @@
             }
 
             .button-search {
-                @apply h-[45px] w-[20%] rounded-r-lg bg-black flex justify-center items-center;
+                @apply h-[45px] w-[20%] rounded-r-lg bg-very-dark-gray flex justify-center items-center;
 
                 img {
                     @apply w-[11px] h-[14px];
@@ -64,11 +64,7 @@
                 }
 
                 .detail {
-                    @apply font-medium text-[15px] leading-[18px] font-rubik;
-
-                    //@media (min-width: 912px) {
-                    //    @apply text-[13px] leading-[16px];
-                    //}
+                    @apply font-medium leading-[21px] text-[18px] font-rubik text-very-dark-gray;
 
                     @media (max-width: 820px) {
                         @apply w-full text-center leading-[21px] text-[18px];
